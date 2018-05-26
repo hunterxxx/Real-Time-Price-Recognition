@@ -78,7 +78,7 @@ public class RecognitionScoreView extends View implements ResultsView {
                     TextView titleLabel = (TextView) ((Activity)context).findViewById(R.id.title);
                     TextView priceLabel = (TextView) ((Activity)context).findViewById(R.id.price);
 
-                    titleLabel.setText("Apple Macbook 12-inch : ");
+                    titleLabel.setText("Apple Macbook 12-inch ");
                     priceLabel.setText("799 € - 1098 €");
 
                 } else if (recog.getTitle().equals("windows") && recog.getConfidence() > 0.6) {
@@ -87,7 +87,7 @@ public class RecognitionScoreView extends View implements ResultsView {
                     TextView titleLabel = (TextView) ((Activity)context).findViewById(R.id.title);
                     TextView priceLabel = (TextView) ((Activity)context).findViewById(R.id.price);
 
-                    titleLabel.setText("Samsung Ultrabook NP530U3C: ");
+                    titleLabel.setText("Samsung Ultrabook NP530U3C ");
                     priceLabel.setText("434 € - 747 €");
                 }
                 y += fgPaint.getTextSize() * 1.5f;
