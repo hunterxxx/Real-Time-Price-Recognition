@@ -16,6 +16,6 @@
 -->
 
 <resources>
-    <string name="app_name">TensorFlow Demo</string>
-    <string name="activity_name_classification">TF Classify</string>
+    <string name="app_name">RTPR</string>
+    <string name="activity_name_classification">Real Time Price Recognition</string>
 </resources>

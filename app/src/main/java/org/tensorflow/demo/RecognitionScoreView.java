@@ -34,7 +34,7 @@ public class RecognitionScoreView extends View implements ResultsView {
     private final float textSizePx;
     private final Paint fgPaint;
     private final Paint bgPaint;
-    //private final TextView titleLabel;
+    private final TextView titleLabel;
 
     public RecognitionScoreView(final Context context, final AttributeSet set) {
         super(context, set);
@@ -49,7 +49,7 @@ public class RecognitionScoreView extends View implements ResultsView {
         bgPaint.setColor(0xccf36b36); //#f36b36
 
 
-        // titleLabel = (TextView) findViewById(R.id.productTitle);
+        titleLabel = (TextView) findViewById(R.id.textView);
         //titleLabel.setText(123);
     }
 
@@ -71,10 +71,11 @@ public class RecognitionScoreView extends View implements ResultsView {
         if (results != null) {
             for (final Recognition recog : results) {
                 if (recog.getTitle().equals("macbook") && recog.getConfidence() > 0.6) {
+                    canvas.drawText("Macbook : 799 € - 1098 €", x, y, fgPaint);
 
-                    canvas.drawText(recog.getTitle() + ": 898 €", x, y, fgPaint);
                 } else if (recog.getTitle().equals("windows") && recog.getConfidence() > 0.6) {
-                    canvas.drawText( recog.getTitle() + ": 434 €", x, y, fgPaint);
+                    canvas.drawText( "Windows : 434 € - 747 €", x, y, fgPaint);
+
                 }
                 y += fgPaint.getTextSize() * 1.5f;
             }
