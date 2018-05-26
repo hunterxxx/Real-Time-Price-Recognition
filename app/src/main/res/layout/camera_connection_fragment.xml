@@ -36,21 +36,24 @@
         android:layout_alignParentBottom="true" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
-        android:text="TextView" />
+        android:text="Title"
+        android:textSize="24px" />
+
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
-        android:text="TextView" />
+        android:text="Price"
+        android:textSize="24px"/>
 
 </RelativeLayout>

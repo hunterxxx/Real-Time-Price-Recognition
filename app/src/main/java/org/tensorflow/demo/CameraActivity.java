@@ -38,6 +38,7 @@ import android.os.Trace;
 import android.util.Size;
 import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.nio.ByteBuffer;
 import org.tensorflow.demo.env.ImageUtils;
@@ -69,7 +70,12 @@ public abstract class CameraActivity extends Activity
   private Runnable postInferenceCallback;
   private Runnable imageConverter;
 
-  @Override
+  public TextView titleLabel;
+  public TextView priceLabel;
+
+
+
+    @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
     super.onCreate(null);
@@ -82,6 +88,10 @@ public abstract class CameraActivity extends Activity
     } else {
       requestPermission();
     }
+
+    TextView titleLabel = (TextView) findViewById(R.id.title);
+    TextView priceLabel = (TextView) findViewById(R.id.price);
+
   }
 
   private byte[] lastPreviewFrame;

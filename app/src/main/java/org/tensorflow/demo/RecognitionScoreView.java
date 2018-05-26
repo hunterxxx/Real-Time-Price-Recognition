@@ -15,11 +15,14 @@ limitations under the License.
 
 package org.tensorflow.demo;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Size;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
@@ -34,10 +37,12 @@ public class RecognitionScoreView extends View implements ResultsView {
     private final float textSizePx;
     private final Paint fgPaint;
     private final Paint bgPaint;
-    private final TextView titleLabel;
+    Context context;
 
     public RecognitionScoreView(final Context context, final AttributeSet set) {
         super(context, set);
+
+        this.context=context;
 
         textSizePx =
                 TypedValue.applyDimension(
@@ -47,16 +52,13 @@ public class RecognitionScoreView extends View implements ResultsView {
 
         bgPaint = new Paint();
         bgPaint.setColor(0xccf36b36); //#f36b36
-
-
-        titleLabel = (TextView) findViewById(R.id.textView);
-        //titleLabel.setText(123);
     }
 
     @Override
     public void setResults(final List<Recognition> results) {
         this.results = results;
         postInvalidate();
+
     }
 
     @Override
@@ -71,11 +73,22 @@ public class RecognitionScoreView extends View implements ResultsView {
         if (results != null) {
             for (final Recognition recog : results) {
                 if (recog.getTitle().equals("macbook") && recog.getConfidence() > 0.6) {
-                    canvas.drawText("Macbook : 799 € - 1098 €", x, y, fgPaint);
+                    //canvas.drawText("Macbook : 799 € - 1098 €", x, y, fgPaint);
+
+                    TextView titleLabel = (TextView) ((Activity)context).findViewById(R.id.title);
+                    TextView priceLabel = (TextView) ((Activity)context).findViewById(R.id.price);
+
+                    titleLabel.setText("Apple Macbook 12-inch : ");
+                    priceLabel.setText("799 € - 1098 €");
 
                 } else if (recog.getTitle().equals("windows") && recog.getConfidence() > 0.6) {
-                    canvas.drawText( "Windows : 434 € - 747 €", x, y, fgPaint);
+                    //canvas.drawText( "Windows : 434 € - 747 €", x, y, fgPaint);
 
+                    TextView titleLabel = (TextView) ((Activity)context).findViewById(R.id.title);
+                    TextView priceLabel = (TextView) ((Activity)context).findViewById(R.id.price);
+
+                    titleLabel.setText("Samsung Ultrabook NP530U3C: ");
+                    priceLabel.setText("434 € - 747 €");
                 }
                 y += fgPaint.getTextSize() * 1.5f;
             }
